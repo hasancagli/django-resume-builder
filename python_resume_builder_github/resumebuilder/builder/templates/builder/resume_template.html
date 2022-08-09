@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Builder | Download PDF</title>
+    <style>
+        body {
+            font-size: 12px;
+        }
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 24px;
+        }
+        .normalText {
+            font-size: 14px;
+            font-weight: normal;
+            margin: 3px 0;
+        }
+        .smallText {
+            font-size: 12px;
+            font-weight: normal;
+            margin: 3px 0;
+        }
+        table td, table td * {
+            vertical-align: top;
+            padding: 5px 0;
+            
+        }
+        th {
+            text-align: left;
+            padding: 5px 0;
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="width: 100%; display: flex; flex-direction: row;" class="general">
+
+        <div style="text-align: center;" class="align">
+            <div class="imageDiv" style="margin-bottom: 24px;">
+                <img  src="{{resume.profile_pic}}" width="120px" height="120px" alt="">
+            </div>
+            
+            <h2 class="normalText">{{resume.name}} {{resume.surname}}</h2>
+            <h2 class="normalText">{{resume.phoneNumber}}</h2>
+            <h2 class="normalText">{{resume.email}}</h2>
+        </div>
+        
+        <table style="margin-top: 24px;">
+            <tr>
+                <th>Title</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td>{{resume.title}}</td>
+                <td>{{resume.location}}</td>
+          </tr>
+        </table>
+
+        <h2 class="title">Introduction</h2>
+        <h2 class="smallText">{{resume.introduce}}</h2>
+
+        
+            
+       
+        <h2 class="title">Experiences</h2>
+        <table>
+            {% for i in experiences %}
+                <tr>
+                    <td>{{i.startDate}} - {{i.endDate}}</td>
+                    <td>{{i.company}} / {{i.title}}</td>
+                    <td>{{i.description}}</td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+        
+
+          <h2 class="title">Skills</h2>
+          {% for i in skills %}
+            <h2 class="smallText">{{i.description}}</h2>
+          {% endfor %}
+
+          <h2 class="title">Hobbies</h2>
+          {% for i in hobbys %}
+            <h2 class="smallText">{{i.description}}</h2>
+          {% endfor %}
+
+          <h2 class="title">Educations</h2>
+          {% for i in educations %}
+            <h2 class="smallText">{{i.description}}</h2>
+          {% endfor %}
+    </div>
+    
+    
+</body>
+</html>

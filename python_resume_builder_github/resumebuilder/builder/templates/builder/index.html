@@ -1,0 +1,288 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+
+{% block pagename %}
+Resume Builder
+{% endblock %}
+
+{% block content %}
+    <section class="mainSection">
+
+        <div class="flexContainer">
+            
+            <div class="flexLeft">
+
+                <h2 class="generalTitle">General Information</h2>
+
+                <div class="inputGroup">
+                    <h3 class="title">Profile Picture</h3>
+                    <form method="POST" action=""  enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form.profile_pic}}
+                        <input type="submit" name="Save" style="margin-left: 8px; margin-top:8px;" class="btn btn-primary">
+                    </form>
+                </div>
+
+                <div class="inputGroup">
+                    <h3 class="title">Name</h3>
+                    <input value="{{resume.name}}" id="name" name="name" type="text" class="form-control" aria-label="Name" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="inputGroup">
+                    <h3 class="title">Surname</h3>
+                    <input value="{{resume.surname}}" id="surname" name="surname" type="text" class="form-control" aria-label="Surname" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="inputGroup">
+                    <h3 class="title">Phone Number</h3>
+                    <input value="{{resume.phoneNumber}}" id="phoneNumber" name="phoneNumber" type="tel" class="form-control" aria-label="Phone Number" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="inputGroup">
+                    <h3 class="title">Email</h3>
+                    <input value="{{resume.email}}" id="email" name="email" type="text" class="form-control" aria-label="Email" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="inputGroup">
+                    <h3 class="title">Title</h3>
+                    <input value="{{resume.title}}" id="title" name="title" type="text" class="form-control" aria-label="Title" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="inputGroup">
+                    <h3 class="title">Location</h3>
+                    <input value="{{resume.location}}" id="location" name="location" type="text" class="form-control" aria-label="Title" placeholder="USA / New York" aria-describedby="basic-addon1">
+                </div>
+
+                <h2 class="generalTitle">About You</h2>
+
+                <div class="inputGroup">
+                    <h3 class="title">Introduce Yourself</h3>
+                    <textarea id="introduce" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Hello, I'm ...">{{resume.introduce}}</textarea>
+                </div>
+
+                <div class="inputGroup">
+                    <h3 class="title">Education</h3>
+
+                    <div id="educationMessages"></div>
+
+                    <div style="display:flex; flex-direction: row; ">
+                        <input id="inputEducation" name="desc" class="form-control" placeholder="Add New Education Info ...">
+                        <button onClick="createEducation()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>
+                    </div>
+                        
+                    <div class="educationInfos" id="educationInfos">
+
+                        {% for i in educations %}
+
+                            <div class="educationInfo">
+                                <h4 class="nameEd">{{ i.description }}</h4>
+                                <button onclick="deleteEducation({{i.id}})" class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+                                <!-- onclick delete/1 as id -->
+                            </div>
+
+                        {%endfor%}
+                    </div>
+                </div>
+
+                <div class="inputGroup">
+                    <h3 class="title">Skills</h3>
+
+                    <div id="skillMessages"></div>
+
+                    <div style="display:flex; flex-direction: row;">
+                        <input id="inputSkill" name="skill" class="form-control" placeholder="Add New Skill ...">
+                        <button onClick="createSkill()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>
+                    </div>
+
+                    <div class="educationInfos" id="skillInfos">
+
+                        {% for i in skills %}
+
+                            <div class="educationInfo">
+                                <h4 class="nameEd">{{ i.description }}</h4>
+                                <button onclick="deleteSkill({{i.id}})" class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+                                <!-- onclick delete/1 as id -->
+                            </div>
+
+                        {%endfor%}
+                    </div>
+
+                </div>
+
+                <div class="inputGroup">
+                    <h3 class="title">Experience</h3>
+
+                    <div id="experienceMessages"></div>
+                    
+                    <div class="rowInfo">
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input name="startEx" type="text" class="form-control" id="startEx">
+                            </div>
+                            <div class="form-group">
+                            <label>End Date</label>
+                            <input name="endEx" type="text" class="form-control" id="endEx">
+                            </div>
+                    </div>
+                        
+                    
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input name="companyEx" type="text" class="form-control" id="companyEx">
+                    </div>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input name="titleEx" type="text" class="form-control" id="titleEx">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="descriptionEx" id="descriptionEx" class="form-control" rows="3"></textarea>
+                    </div>
+                    
+                    
+                    <button onclick="createExperience()" type="submit" class="btn btn-primary">Add</button>
+                    
+                    
+
+
+                    <div class="educationInfos" id="experienceInfos">
+                        {% for i in experiences %}
+
+                        <div class="educationInfo">
+                            <h4 class="nameEd">{{ i.company }} - {{i.title}}</h4>
+                            <button onclick="deleteExperience({{i.id}})" class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+                            <!-- onclick delete/1 as id -->
+                        </div>
+
+                    {%endfor%}
+                    </div>
+
+                    
+                </div>
+
+                <div class="inputGroup">
+                    <h3 class="title">Hobbies</h3>
+
+                    <div id="hobbyMessages"></div>
+
+                    <div style="display:flex; flex-direction: row; ">
+                        <input id="inputHobby" name="desc" class="form-control" placeholder="Add New Hobby ...">
+                        <button onClick="createHobby()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>
+                    </div>
+
+                    <div class="educationInfos" id="hobbyInfos">
+
+                        {% for i in hobbys %}
+
+                            <div class="educationInfo">
+                                <h4 class="nameEd">{{ i.description }}</h4>
+                                <button onclick="deleteHobby({{i.id}})" class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+                                <!-- onclick delete/1 as id -->
+                            </div>
+
+                        {%endfor%}
+                    </div>
+                    
+                </div>
+
+                <div style="height: 50px;"class="height"></div>
+
+            </div>
+
+            <div class="flexRight">
+                <div class="rightDiv">
+                    <div class="rightRow">
+                        <div class="resumeDiv" id="resumeDiv">
+                            <div class="left">
+                                <img src="{{resume.profile_pic.url}}" alt="" class="resumeImage">
+                                <h2 class="lightResumeTitle">ABOUT ME</h2>
+                                <h3 class="textResume" id="introduceArea">{{resume.introduce}}</h3>
+                                <div class="line"></div>
+                                <h2 class="lightResumeTitle">SKILLS</h2>
+                                <div class="skillsDiv" id="skillsDiv">
+                                    {% for i in skills %}
+                                        <h3 class="textResume">{{i.description}}</h3>
+                                    {% endfor %}
+                                </div>
+                                
+
+                                <h2 class="lightResumeTitle">HOBBIES</h2>
+                                <div class="hobbiesDiv" id="hobbiesDiv">
+                                    {% for i in hobbys %}
+                                        <h3 class="textResume">{{i.description}}</h3>
+                                    {% endfor %}
+                                </div>
+                                
+                            </div>
+
+                            <div class="right">
+                                <div class="topRow">
+                                    <div class="rowLeft">
+                                        <h4 class="nameText" id="nameArea">{{resume.name}}</h4>
+                                        <h4 class="nameText" id="surnameArea">{{resume.surname}}</h4>
+                                        <h4 class="nameTextSm" id="titleArea">{{resume.title}}</h4>
+                                    </div>
+                                    <div class="rowRight">
+                                        <div class="textRow">
+                                            <i style="font-size: 12px;" class="material-icons">location_on</i>
+                                            <h3 class="textResumeDark iconText" id="locationArea">{{resume.location}}</h3>
+                                        </div>
+                                        <div class="textRow">
+                                            <i style="font-size: 12px;" class="material-icons">local_phone</i>
+                                            <h3 class="textResumeDark iconText" id="phoneNumberArea">{{resume.phoneNumber}}</h3>
+                                        </div>
+                                        <div class="textRow">
+                                            <i style="font-size: 12px;" class="material-icons">email</i>
+                                            <h3 class="textResumeDark iconText" id="emailArea">{{resume.email}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lineLighter"></div>
+
+                                <h2 class="darkResumeTitle">WORK EXPERIENCE</h2>
+
+                                <div class="workExperiences" id="workExperiences">
+                                    {% for i in experiences %}
+
+                                        <div class="experienceRow">
+                                            <div class="exLeft">
+                                                <h4 class="date">{{i.startDate}} - {{i.endDate}}</h4>
+                                                <h4 class="company">{{i.company}}</h4>
+                                            </div>
+                                            <div class="exRight">
+                                                <h4 class="date">{{i.title}}</h4>
+                                                <h4 class="description">{{i.description}}</h4>
+
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                
+                                
+                                <div class="lineLighter"></div>
+
+                                <h2 class="darkResumeTitle">EDUCATION</h2>
+                                <div class="educationsDiv" id="educationsDiv">
+                                    {% for i in educations %}
+                                        <h4 class="date">{{i.description}}</h4>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <a href="/pdf_view"><button type="button" class="btn btn-primary">Download Resume as PDF</button></a>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="{% static '/js/index.js' %}"></script>
+
+    {% endblock %}

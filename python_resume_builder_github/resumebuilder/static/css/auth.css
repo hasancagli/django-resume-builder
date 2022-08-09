@@ -1,0 +1,12 @@
+.mainDiv {
+    padding: 2rem;
+}
+
+.form-control {
+    margin-bottom: 18px;
+}
+
+#messages {
+    padding: 1rem 0;
+    color: green;
+}

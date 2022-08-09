@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    font-family: "Inter";
+}
+
+/* NAVBAR */
+
+.nav-a {
+    padding-right: 32px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* MAIN DIVS */
+
+.flexContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem 8rem;
+}
+
+.flexLeft {
+    flex: 3;
+}
+  
+.flexRight {
+    flex: 3;
+    width: 100%;
+}
+
+.inputGroup {
+    margin-bottom: 22px;
+}
+
+.generalTitle {
+    
+    font-weight: bold;
+    font-size: 24px;
+    color: blue;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.form-control {
+    width: 60%;
+    margin-right: 8px;
+}
+
+/* EDUCATION */
+.educationInfos {
+    margin: 1rem 0;
+}
+
+.educationInfo {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 12px;
+}
+
+.nameEd {
+    color: grey;
+    font-size: 16px;
+    margin: auto 16px auto 0;
+}
+
+
+/* ADD EXPERIENCE */
+.rowInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-group {
+    margin-bottom: 8px;
+}
+
+.rightDiv {
+    width: 35%; 
+}
+
+/* CV */
+
+.rightDiv {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+    
+}
+
+.resumeDiv {
+    flex: 12;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    position: fixed;
+    height: 80%;
+    margin-right: 100px;
+}
+.buttons {
+    flex: 3;
+    margin-top: 24px;
+    bottom: 50px;
+    position: fixed;
+}
+
+.left {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    background-color: rgb(73, 73, 73);
+    text-align: left;
+}
+
+.right {
+    flex: 10;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+}
+
+.resumeImage {
+    margin: 0 auto;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 24px;
+}
+
+.lightResumeTitle {
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.darkResumeTitle {
+    font-size: 14px;
+    color:rgb(92,92,92);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.textResume {
+    font-size: 10px;
+    color: white;
+    font-weight: normal;
+}
+
+.textResumeDark {
+    font-size: 10px;
+    color:rgb(92,92,92);
+    font-weight: normal;
+}
+
+.line {
+    height:1px;
+    width: 100%;
+    background-color: grey;
+    margin: 8px 0;
+}
+
+.lineLighter {
+    height:1px;
+    width: 100%;
+    background-color: grey;
+    margin: 16px 0;
+    opacity: 0.5;
+}
+
+.topRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nameText {
+    color:rgb(92,92,92);
+    font-size:20px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.nameTextSm {
+    margin-top: 8px;
+    color:rgb(92,92,92);
+    font-size:14px;
+    margin-bottom: 4px;
+}
+
+.textRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.iconText {
+    margin-left: 6px;
+}
+
+.experienceRow {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 17px;
+}
+
+.exLeft {
+    flex: 2;
+    margin-right: 24px;
+}
+
+.exRight {
+    flex: 5;
+}
+
+.date {
+    font-size: 10px;
+}
+
+.company {
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 9px;
+}
+
+
+.message {
+    background-color: rgb(192, 70, 70);
+    padding: 0.4rem 1rem;
+    width: 40%;
+    font-weight: normal;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.messageText {
+    color : white;
+    font-size: 14px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1400px) {
+    .flexContainer{
+        padding: 1rem 2rem;
+    }
+
+    .resumeDiv {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .flexLeft {
+        margin-right: 30px;
+    }
+    .flexRight {
+        flex: 4;
+    }
+    .form-control {
+        width: 80%;
+    }
+    .left {
+        padding: 2rem;
+    }
+    .right {
+        padding : 2rem;
+    }
+    .textResume {
+        font-size: 8px;
+    }
+
+    .nameText {
+        font-size: 16px;
+    }
+
+    .nameTextSm {
+        font-size: 10px;
+    }
+
+    .textResumeDark {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .generalTitle {
+        font-size: 20px;
+    }
+    .title {
+        font-size: 14px;
+    }
+    .inputGroup {
+        margin-bottom: 12px;
+    }
+    .nameEd {
+        font-size: 12px;
+    }
+    .form-control {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 870px) {
+    .flexContainer {
+        display:block;
+    }
+    .flexRight {
+        height: 100%;
+    }
+
+    .resumeDiv {
+        position: relative;
+        height: 100%;
+    }
+
+    .buttons {
+        flex: 3;
+        position: relative;
+        margin-top: 100px;
+    }
+
+    .rightDiv {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 420px) {
+    .buttons {
+        margin-top: 20px;
+    }
+    .btn-success {
+        margin-bottom: 15px;
+    }
+    .form-control {
+        width: 100%;
+    }
+    .flexContainer {
+        padding: 0.5rem 1rem;
+    }
+}

@@ -1,0 +1,59 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static '/css/auth.css' %}">
+{% endblock %}
+
+{% block pagename %}
+Register
+{% endblock %}
+
+{% block content %}
+    <div class="mainDiv">
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            
+            {{form.username.label}}
+            {{form.username}}
+        
+            {{form.email.label}}
+            {{form.email}}
+        
+        
+            {{form.password1.label}}
+            {{form.password1}}
+         
+        
+            {{form.password2.label}}
+            {{form.password2}}
+
+            {{form.errors}}
+
+            <label for="login">Already have an account?  <a href="{% url 'login' %}">Login.</a></label>
+        
+            <div>
+                
+            <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+
+    </div>  
+    
+
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Username..';
+		form_fields[2].placeholder='Email..';
+		form_fields[3].placeholder='Enter password...';
+		form_fields[4].placeholder='Re-enter Password...';
+
+
+		for (var field in form_fields){	
+			form_fields[field].className += ' form-control'
+		}
+
+    </script>
+    
+{% endblock %}
