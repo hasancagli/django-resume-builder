@@ -15,3 +15,4 @@ This app consists of one single page (except login and register) and you can man
 - Amazon S3 as File Storage
 - Updating Data in Real Time in Preview Section
 - User Authentication and Management
+- Converting HTML File to PDF File using Python in Backend 
