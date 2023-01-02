@@ -1,8 +1,5 @@
 # Django Resume Builder
 
-## Link to Live Demo
-https://djangoresumebuilderapp.herokuapp.com/
-
 ![image](https://user-images.githubusercontent.com/53555551/183702966-ccd0d8fe-6b99-45c7-ad86-b20148e73c79.png)
 
 ## How This App Works?
